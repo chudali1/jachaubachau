@@ -12,16 +12,21 @@ package com.cab.jachaubachau.entity;
 
 public class Login {
     private int id;
-  private String email, password,role;
+  private String name,email, password,role;
 
     public Login() {
     }
 
-    public Login(int id, String email, String password, String role) {
+    public Login(int id,String name, String email, String password, String role) {
         this.id = id;
         this.email = email;
+        this.name=name;
         this.password = password;
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
     }
    
 
@@ -39,6 +44,10 @@ public class Login {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {

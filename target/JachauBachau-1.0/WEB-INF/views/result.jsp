@@ -1,36 +1,36 @@
 <%@include file="../shared/header.jsp" %>
 <%@include file="../shared/headlinkjsp.jsp" %>
+
+
+
+
+
 Searched Items
-<div class="box">
-            <div class="box-header">
-                <h1 class="box-title">Result based on symptoms</h1>
-                <h2>${selectbasic} ${radios} ${symptom}</h2>
-              
-            </div>
-    Disease Diagnosed as :<h1> ${result}</h1>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table table-striped">
-                  
-                  <thead>
-                  <th>Disease</th>
-                  <th>Probability</th>
-                  </thead>
-                  
-                  <tbody>
-                     
-                      <c:forEach items="${other}" var="oth">             
-                      <tr>
-                          <td>${oth.category}</td>
-                          <td>${oth.probability}</td>
-                      </tr>
-                      </c:forEach>
-                  </tbody>
+<div class="container">
+  <h2>Results</h2>
+  <p>Symptoms:</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Disease Name</th>
+        <th>Probability</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <c:forEach var="mapV" items="${ma}">
+            <tr>
+             <td> ${mapV.value}</td>
+             <td> ${mapV.key} </td> 
+            </tr>
+        </c:forEach>
+    </tbody>
                 
-             </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
+  </table>
+</div>
+
+    <!-- /.box-body -->
+</div>
 
 
 

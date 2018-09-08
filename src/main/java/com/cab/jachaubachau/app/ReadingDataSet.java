@@ -1,5 +1,6 @@
 package com.cab.jachaubachau.app;
 
+
 import de.daslaboratorium.machinelearning.classifier.Classification;
 import de.daslaboratorium.machinelearning.classifier.Classifier;
 import de.daslaboratorium.machinelearning.classifier.bayes.BayesClassifier;
@@ -15,9 +16,18 @@ import java.util.logging.Logger;
 public class ReadingDataSet {
     //defining logger for this classs
     public static Logger logger= Logger.getLogger(ReadingDataSet.class.getName());
-    private Classifier<String,String> bayes=new BayesClassifier<String, String>();
+    private Classifier<String,String> bayes=null;
+
 
     public  String readingDataSet(String fileName){
+        if(bayes!=null){
+        bayes.reset();
+        bayes=new BayesClassifier<String, String>();
+        
+        }
+        else{
+         bayes=new BayesClassifier<String, String>();   
+        }
         //getting location upto Desktop
         String location=System.getProperty("user.home")+System.getProperty("file.separator")+"Desktop";
         //keep your file in the desktop and it should be named as Book1.xlsx so that this code reads it
@@ -81,17 +91,17 @@ Collection<Classification<String, String>> output=null;
         System.out.println("Classification Result");
         System.out.println("Disease classified ="+result.getCategory());
         System.out.println("=====Probability Result=====");
-        output= ((BayesClassifier<String, String>) bayes).classifyDetailed(
+        output=((BayesClassifier<String, String>) bayes).classifyDetailed(
                 Arrays.asList(toPredictString.split("\\s")));
-       
-  return result.getCategory();
+        System.out.println(output);
+        return result.getCategory();
     }
-    
-    public Collection<Classification<String, String>> getOther(){
+
+ public Collection<Classification<String, String>> getOther(){
         return output;
     }
 
 
 
-
 }
+

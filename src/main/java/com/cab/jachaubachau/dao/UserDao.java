@@ -26,6 +26,8 @@ public interface UserDao extends GenericDao<User>{
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    List<Login> loginMe(String email, String password) throws ClassNotFoundException,SQLException;
+   boolean  loginMe(String email, String password) throws ClassNotFoundException,SQLException;
+   List<Login> loginMe1(String email,String password) throws ClassNotFoundException,SQLException;
+   List<Login> getAlllogin() throws ClassNotFoundException,SQLException;
     
 }

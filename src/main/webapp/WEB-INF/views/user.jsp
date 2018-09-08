@@ -7,6 +7,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+
+<!------ Include the above in your HEAD tag ---------->
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Admin JachauBachau| Dashboard</title>
@@ -31,6 +37,7 @@
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="${SITE_URL}/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
         <link rel="stylesheet" href="${SITE_URL}/static/plugins/select2/select2.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 
         <!-- Google Font: Source Sans Pro -->
@@ -178,30 +185,45 @@
                                             <div class="page-header">
                                                 <h1>Users</h1>
                                             </div>
+                                            <div class="table-responsiv">
 
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">id</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">email</th>
-                                                        <th scope="col">User Type</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                    <c:forEach var="user" items="${users}">
+                                                <table class="table table-bordred table-striped">
+                                                    <thead>
                                                         <tr>
-                                                            <td>${user.id}</td>
-                                                            <td>${user.name}</td>
+                                                            <th scope="col">id</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">email</th>
+                                                            <th scope="col">User Type</th>
+                                                            <th scope="col">Action</th>
+                                                          
                                                         </tr>
-                                                        
-                                                        
-                                                    </c:forEach>
-                                                        
-                                                </thead>
-                                                <tbody>
+                                                        <c:forEach items="${result}" var="user" >
+                                                            <tr>
+                                                                <td>${user.getId()}</td>
+                                                                <td>${user.getName()}</td>
+                                                                <td>${user.getEmail()}</td>
+                                                                <td>${user.getRole()}</td>
+                                                                <td>
+                                                                    <a href="#" class="btn btn-success btn-xs">
+                                                                        <span class="glyphicon glyphicon-pencil"> </span>
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-danger btn-xs">
+                                                                        <span class="glyphicon glyphicon-trash"> </span>
+                                                                    </a>
+                                                                    
+                                                                </td>
+                                                               
+                                                            </tr>
 
-                                                </tbody>
-                                            </table>
+
+                                                        </c:forEach>
+
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div> 
                                     </section> 
                                     <%@include file="../shared/sidebar.jsp" %>

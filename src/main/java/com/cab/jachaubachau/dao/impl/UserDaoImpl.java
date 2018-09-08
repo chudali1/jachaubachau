@@ -40,9 +40,29 @@ public class UserDaoImpl implements UserDao {
         return user;
         
     }
+ 
+    @Override
+    public boolean loginMe(String email, String password) throws ClassNotFoundException, SQLException {
+       boolean value=false;
+       
+       List<Login> login = new ArrayList<>();
+       db.open();
+        db.init("select * from user where user_email='" + email + "'and user_password='" + password + "'");
+        try {
+            ResultSet rs = db.query();
+            if (rs.next()) {
+                value=true;
+                login.add(LoginMapData(rs));
+               
+         }
+        } catch (Exception e) {
+        }
+       
+       return value;
+    }
     
     @Override
-    public List<Login> loginMe(String email, String password) throws ClassNotFoundException, SQLException {
+    public List<Login> loginMe1(String email, String password) throws ClassNotFoundException, SQLException {
         List<Login> login = new ArrayList<>();
         
         db.open();
@@ -135,10 +155,28 @@ public class UserDaoImpl implements UserDao {
     private Login LoginMapData(ResultSet rs) throws SQLException {
         return LoginBuilder.create()
                 .setId(rs.getInt("id"))
+                .setName(rs.getString("user_name"))
                 .setEmail(rs.getString("user_email"))
                 .setPassword(rs.getString("user_password"))
                 .setRole(rs.getString("user_type"))
                 .build();
     }
+
+    @Override
+    public List<Login> getAlllogin() throws ClassNotFoundException, SQLException {
+        List<Login> login = new ArrayList<>();
+        db.open();
+        db.init("select * from user");
+        ResultSet rs = db.query();
+        while (rs.next()) {
+            login.add(LoginMapData(rs));
+            
+        }
+        db.close();
+        return login;
+    
+    }
+
+    
     
 }

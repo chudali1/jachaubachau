@@ -173,6 +173,7 @@
 
     <!-- Main content -->
     <section class="content">
+        <a href="${pageContext.request.contextPath}/home/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
         
         
         <div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Add</button></div>

@@ -7,7 +7,7 @@
 <%@page import="com.cab.jachaubachau.dao.SymptomsDao"%>
 <%@include file="../shared/header.jsp" %>
 <div class="container-fluid">
-
+ <a href="${pageContext.request.contextPath}/home/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
     <!-- SELECT2 EXAMPLE -->
     <div class="card card-default">
         <div class="card-header">

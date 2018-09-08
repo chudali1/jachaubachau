@@ -201,7 +201,10 @@
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin"   action="${pageContext.request.contextPath}/loginprocess" method="POST">
                 <span id="reauth-email" class="reauth-email"></span>
+                <p style="color: red"> ${message}</p> 
                       <div class="form-group">
+                                   
+
                                 <label for="email" class="cols-sm-2 control-label">Your Email</label>
                                 <div class="cols-sm-10">
                                     <div class="input-group">

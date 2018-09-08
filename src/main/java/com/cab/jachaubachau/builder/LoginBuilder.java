@@ -15,7 +15,7 @@ import com.cab.jachaubachau.entity.Login;
 public class LoginBuilder {
 
     private int id;
-    private String email, password, role;
+    private String name,email, password, role;
 
     public LoginBuilder() {
     }
@@ -24,8 +24,9 @@ public class LoginBuilder {
         return new LoginBuilder();
     }
 
-    public LoginBuilder(int id, String email, String password, String role) {
+    public LoginBuilder(int id, String name,String email, String password, String role) {
         this.id = id;
+        this.name=name;
         this.email = email;
         this.password = password;
         this.role = role;
@@ -35,6 +36,11 @@ public class LoginBuilder {
         this.id = id;
         return this;
     }
+    
+    public LoginBuilder setName(String name) {
+        this.name = name;
+        return this;
+    } 
     
     public LoginBuilder setEmail(String email) {
         this.email = email;
@@ -56,7 +62,7 @@ public class LoginBuilder {
     
 
     public Login build() {
-        Login login = new Login(id,  email, password,role);
+        Login login = new Login(id, name, email, password,role);
         return login;
     }
 
